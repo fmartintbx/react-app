@@ -2,10 +2,16 @@ import { useState } from "react"
 import Header from "./components/Header"
 
 function App() {
-   const[cantidad, setCantidad] = useState();
+   const[cantidad, setCantidad] = useState(10000);
+
+   const MIN=0;
+   const MAX=20000;
+   const STEP=100;
 
    function handleChange(e){ 
-          console.log(+e.target.value);
+          setCantidad(+e.target.value);
+
+
    }
    
   return (
@@ -16,7 +22,14 @@ function App() {
             type="range"
             className="w-full h-6 bg-gray-200 accent-line-500 hover:accent-line-600"
             onChange={handleChange}
-        />
+            min={MIN}
+            max={MAX}
+            step={STEP}
+            value={cantidad}  />
+        
+        <p className="text-center my-10 text-5xl font-extrabold text-indigo-500"> 
+        {cantidad}
+        </p>
    </div>
   )
 }
